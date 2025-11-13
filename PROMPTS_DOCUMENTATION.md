@@ -691,3 +691,508 @@ sum_numbers <- function(n) {
    - Используйте осмысленные имена
    - Следуйте конвенциям языка (camelCase, snake_case)
 
+---
+
+## 4. Тестовые промты и API примеры
+
+### Описание
+Коллекция промтов, используемых для тестирования модели и демонстрации работы API. Включает как простые тестовые случаи, так и сложные промты из бенчмарка HumanEval.
+
+### 4.1. Тестовые промты MindSpore Generation
+
+**Расположение:** `codegeex/mindspore/generation.py:203-226`
+
+**Назначение:** Комплексное тестирование различных возможностей модели
+
+#### 4.1.1. Простой текст (проверка не-кода)
+
+```
+Hello there!
+```
+
+**Цель:** Проверка, как модель реагирует на обычный текст (не код)
+
+---
+
+#### 4.1.2. Python - Базовая арифметика
+
+```python
+# language: Python
+def add(a, b):
+    '''
+    Find the sum of a and b.
+    '''
+```
+
+**Цель:** Тест простейшей функции с language tag
+
+---
+
+#### 4.1.3. Python - Без language tag
+
+```python
+def add(a, b):
+    '''
+    Find the sum of a and b.
+    '''
+```
+
+**Цель:** Проверка работы без явного тега языка
+
+---
+
+#### 4.1.4. Python - Математическая оптимизация
+
+```python
+# language: Python
+def optimization():
+    '''
+    Find the maximum of P=E**2*R/(R + r)**2 if E and r are fixed but R varies.
+    Import sympy. Use sympy. Find where the derivative is equal to zero.
+    Substitute the value of R into P.
+    '''
+```
+
+**Цель:** Тест сложной математической задачи с использованием библиотеки sympy
+
+**Особенности:**
+- Требует знания математического анализа (производные)
+- Требует знания библиотеки sympy
+- Демонстрирует способность к символьным вычислениям
+
+---
+
+#### 4.1.5. Python - HumanEval задача
+
+```python
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+```
+
+**Цель:** Стандартная задача из бенчмарка HumanEval
+
+**Особенности:**
+- Использование type hints (List[float])
+- Docstring с примерами использования (doctest формат)
+- Проверка алгоритмических навыков
+
+---
+
+#### 4.1.6. JavaScript - Проверка простых чисел
+
+```javascript
+// language: JavaScript
+function prime(n) {
+    // Find whether n is a prime number.
+```
+
+**Цель:** Тест алгоритмической задачи на JavaScript
+
+---
+
+#### 4.1.7. C++ - Кодировщик азбуки Морзе
+
+```cpp
+string morse_encoder(string text) {
+    // Translate text into Morse code
+```
+
+**Цель:** Тест обработки строк и знания азбуки Морзе
+
+---
+
+#### 4.1.8. Python - Кодировщик азбуки Морзе
+
+```python
+def morse_encoder(text):
+    # Translate text into Morse code separated by spaces
+```
+
+**Цель:** Та же задача на Python
+
+---
+
+#### 4.1.9. MATLAB - Решение линейных систем
+
+```matlab
+% language: MATLAB
+function x = solve(A, b)
+    % Solve Ax = b
+```
+
+**Цель:** Тест научных вычислений (линейная алгебра)
+
+---
+
+#### 4.1.10. MATLAB - LU разложение
+
+```matlab
+% language: MATLAB
+function [L, U] = lu(A)
+    % Return LU factorization of A
+```
+
+**Цель:** Тест сложных матричных операций
+
+**Особенности:**
+- Множественные возвращаемые значения
+- Требует знания численных методов
+
+---
+
+#### 4.1.11. Python - TCP протокол
+
+```python
+def TCPState(state):
+    # given a state in TCP protocol, return a list of next possible states
+```
+
+**Цель:** Тест знания компьютерных сетей
+
+**Особенности:**
+- Требует знания диаграммы состояний TCP
+- Проверка доменных знаний
+
+---
+
+#### 4.1.12. Python/Ruby - Расчет расстояния
+
+```ruby
+def coordinates(p1, p2, precision=0)
+    # p1 is (x1, y1), p2 is (x2, y2), return the distance between p1 and p2
+    # on a cartesian plane, rounded to precision
+```
+
+**Цель:** Геометрические вычисления
+
+**Особенности:**
+- Параметр precision по умолчанию
+- Формула расстояния между точками
+
+---
+
+#### 4.1.13. C++ - Задача о лошади
+
+```cpp
+double travel(double total_time, double run_time, double rest_time, double speed) {
+    // the horse runs for run_time with speed speed and rests for rest_time,
+    // return the distance it travels after total_time
+```
+
+**Цель:** Задача на моделирование
+
+---
+
+#### 4.1.14. C++ - Сортировка массива
+
+```cpp
+// language: C++
+void sort(int *array, int len) {
+   // Sort the array with length len
+```
+
+**Цель:** Тест алгоритмов сортировки
+
+**Особенности:**
+- Работа с указателями
+- In-place модификация
+
+---
+
+#### 4.1.15. MATLAB - Матрица Гильберта
+
+```matlab
+% language: MATLAB
+function H = hilbert(n)
+    % Return Hilbert matrix of size n * n
+```
+
+**Цель:** Специальные математические матрицы
+
+---
+
+#### 4.1.16. MATLAB - Разложение Холецкого
+
+```matlab
+% language: MATLAB
+function L = cholesky(A)
+    % Return Cholesky factorization of symmetric positive definete matrix A
+```
+
+**Цель:** Продвинутые численные методы
+
+**Особенности:**
+- Требует проверки условий (симметричность, положительная определенность)
+- Численная стабильность
+
+---
+
+### 4.2. API Примеры
+
+#### 4.2.1. Python API Example
+
+**Расположение:** `api/codegeex-api-example-python/generation_example.py:12-15`
+
+**Назначение:** Демонстрация использования CodeGeeX API из Python
+
+```python
+from typing import List
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+```
+
+**Использование:**
+```python
+# В коде API клиента это отправляется как промт
+prompt = """<промт выше>"""
+response = codegeex_api.generate(prompt)
+```
+
+---
+
+#### 4.2.2. Java API Example
+
+**Расположение:** `api/codegeex-api-example-java/src/main/java/cn/aminer/codegeex/example/CodeGenerationExample.java:24-26`
+
+**Назначение:** Демонстрация использования CodeGeeX API из Java
+
+```java
+// use OkHttpClient library to write a function to perform http post request
+
+public class HttpPost {
+    public static void main(String[] args) {
+```
+
+**Использование:**
+```java
+String prompt = "// use OkHttpClient library...\n\npublic class HttpPost {\n...";
+String code = codegeexClient.generate(prompt);
+```
+
+**Особенности:**
+- Явное указание библиотеки (OkHttpClient)
+- Практическая задача (HTTP POST запрос)
+- Демонстрация интеграции API
+
+---
+
+### 4.3. Placeholder текст UI
+
+**Расположение:** `deployment/server_gradio.py:159`
+
+```
+Please enter the description or select an example input below.
+```
+
+**Назначение:** Текст-подсказка в пустом поле ввода веб-интерфейса
+
+**Особенности:**
+- Направляет пользователя к вводу описания или выбору примера
+- Улучшает UX для новых пользователей
+
+---
+
+## 5. Служебные константы (Import Helpers)
+
+### Описание
+Предопределенные списки импортов для различных языков программирования. Автоматически добавляются к коду при необходимости для обеспечения доступности стандартных библиотек.
+
+### Расположение
+- **Файл:** `codegeex/benchmark/utils.py`
+- **Строки:** 6-48
+
+### Назначение
+- Добавление стандартных импортов к сгенерированному коду
+- Обеспечение корректной работы кода без явного указания импортов в промте
+- Используется в бенчмарках для стандартизации тестового окружения
+
+---
+
+### 5.1. Python Imports
+
+```python
+IMPORT_HELPER = {
+    "python": [
+        "import math",
+        "import re",
+        "import sys",
+        "import copy",
+        "import datetime",
+        "import itertools",
+        "import collections",
+        "import heapq",
+        "import statistics",
+        "import functools",
+        "import hashlib",
+        "import numpy",
+        "import numpy as np",
+        "import string",
+        "from typing import *",
+        "from collections import *",
+    ]
+}
+```
+
+**Покрытые области:**
+- **Математика:** math, statistics, numpy
+- **Работа со строками:** re, string
+- **Структуры данных:** collections, heapq
+- **Функциональное программирование:** itertools, functools
+- **Системные:** sys, copy, datetime
+- **Криптография:** hashlib
+- **Типизация:** typing
+
+**Использование:** Эти импорты добавляются в начало Python кода перед выполнением или тестированием
+
+---
+
+### 5.2. Go Imports
+
+```python
+IMPORT_HELPER = {
+    "go": [
+        "math",
+        "strings",
+        "fmt",
+        "strconv",
+        "time",
+        "bytes",
+        "regexp",
+        "sort",
+        "math/rand",
+        "crypto/md5",
+    ]
+}
+```
+
+**Покрытые области:**
+- **Математика:** math, math/rand
+- **Работа со строками:** strings, strconv, bytes, regexp
+- **Ввод-вывод:** fmt
+- **Время:** time
+- **Алгоритмы:** sort
+- **Криптография:** crypto/md5
+
+**Использование:** Формируется блок import для Go кода
+
+---
+
+### 5.3. C++ Includes
+
+```python
+IMPORT_HELPER = {
+    "cpp": [
+        "#include<stdlib.h>",
+        "#include<algorithm>",
+        "#include<math.h>",
+        "#include<stdio.h>",
+        "#include<vector>",
+        "#include<string>",
+        "#include<climits>",
+        "#include<cstring>",
+        "#include<iostream>",
+    ]
+}
+```
+
+**Покрытые области:**
+- **Стандартные функции:** stdlib.h, stdio.h
+- **Алгоритмы:** algorithm, sort
+- **Математика:** math.h
+- **Структуры данных:** vector, string
+- **Константы и пределы:** climits
+- **Строки C:** cstring
+- **Потоки ввода-вывода:** iostream
+
+**Использование:** Добавляются в начало C++ файла перед компиляцией
+
+---
+
+### Применение в коде
+
+#### Пример использования в Python бенчмарке
+
+```python
+def add_imports_to_code(code, language):
+    """Добавляет стандартные импорты к коду"""
+    if language in IMPORT_HELPER:
+        imports = "\n".join(IMPORT_HELPER[language])
+        return f"{imports}\n\n{code}"
+    return code
+
+# Использование
+python_code = "def add(a, b): return a + b"
+full_code = add_imports_to_code(python_code, "python")
+# Результат:
+# import math
+# import re
+# ...
+# from collections import *
+#
+# def add(a, b): return a + b
+```
+
+### Важные особенности
+
+1. **Избыточность vs Полнота**
+   - Включены даже редко используемые библиотеки для максимального покрытия
+   - Для Python включен и `import numpy`, и `import numpy as np`
+
+2. **Стандартизация**
+   - Все бенчмарки используют одинаковый набор импортов
+   - Обеспечивает воспроизводимость результатов
+
+3. **Отсутствие конфликтов**
+   - `from typing import *` и `from collections import *` могут вызвать конфликты имен
+   - В тестовом окружении это допустимо для простоты
+
+4. **Языковая специфика**
+   - Каждый язык имеет свой набор, отражающий идиоматичные практики
+   - C++ использует старый стиль headers (`.h`) для совместимости
+
+---
+
+## Заключение
+
+### Архитектура промтов CodeGeeX
+
+CodeGeeX использует **минималистичную архитектуру промтов**, полагаясь на:
+
+1. **Естественный код как промт** - комментарии и структура кода служат инструкциями
+2. **Language tags** - простые маркеры для идентификации языка
+3. **Code translation формат** - специальный паттерн для кроссязыковой трансляции
+4. **Контекстное обучение** - модель обучена на огромном корпусе кода и понимает паттерны
+
+### Нет традиционных system prompts
+
+В отличие от ChatGPT или других чат-моделей, CodeGeeX **не использует**:
+- System instructions ("You are a helpful coding assistant...")
+- Chat-style форматирование (User: ... Assistant: ...)
+- Явные instruction templates ("Generate code for...", "Complete the following...")
+
+### Ключевые принципы успешных промтов
+
+1. **Комментарии как документация** - пишите четкие комментарии на естественном языке
+2. **Примеры в docstrings** - показывайте примеры использования
+3. **Структурированный контекст** - предоставляйте сигнатуры, импорты, типы
+4. **Специфичность** - указывайте алгоритмы, структуры данных, edge cases
+5. **Идиоматичность** - следуйте конвенциям целевого языка
+
+Эта документация охватывает **все промты**, используемые в CodeGeeX, от низкоуровневых language tags до высокоуровневых примеров генерации кода.
+
