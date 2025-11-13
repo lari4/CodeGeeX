@@ -340,3 +340,354 @@ public class Solution {
 Python:
 ```
 
+---
+
+## 3. Примеры промтов для генерации кода
+
+### Описание
+Коллекция демонстрационных промтов, используемых в веб-интерфейсе Gradio для показа возможностей CodeGeeX. Эти примеры охватывают 15 различных языков программирования и демонстрируют паттерны написания эффективных промтов для генерации кода.
+
+### Расположение
+- **Файл:** `deployment/example_inputs.jsonl`
+- **Использование:** `deployment/server_gradio.py` (загружает примеры для UI)
+
+### Назначение
+- Демонстрация возможностей модели для новых пользователей
+- Примеры правильного форматирования промтов
+- Быстрый старт работы с системой (кнопка "Select Example")
+- Тестирование базовой функциональности на разных языках
+
+### Общий паттерн промтов для генерации кода
+
+```
+[Комментарий с описанием задачи на естественном языке]
+[Сигнатура функции/класса/структуры кода]
+```
+
+Ключевые принципы:
+1. Описание пишется в комментариях, соответствующих стилю языка
+2. Описание должно быть четким и конкретным
+3. После описания следует начало кода (сигнатура, объявление)
+4. Модель дополнит код после этой точки
+
+---
+
+### 3.1. Python - Суммирование чисел
+
+**Язык:** Python
+**Задача:** Базовая математическая функция
+
+```python
+# Write a function that returns the sum of the numbers from 1 to n.
+# For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+
+# You may assume that n is a positive integer.
+def sum_of_numbers(n):
+```
+
+**Особенности:**
+- Использование # для комментариев
+- Четкое описание ожидаемого поведения с примером
+- Указание предусловий (n - положительное целое)
+- Имя функции описывает ее назначение
+
+---
+
+### 3.2. C++ - Суммирование чисел
+
+**Язык:** C++
+**Задача:** Та же задача на C++
+
+```cpp
+// Write a function that returns the sum of the numbers from 1 to n.
+// For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+
+#include <iostream>
+using namespace std;
+int sum_of_numbers(int n) {
+```
+
+**Особенности:**
+- Использование // для комментариев (стиль C++)
+- Включены необходимые заголовочные файлы
+- Указан тип возвращаемого значения и параметра
+
+---
+
+### 3.3. C - Суммирование чисел
+
+**Язык:** C
+**Задача:** Та же задача на чистом C
+
+```c
+// Write a function that returns the sum of the numbers from 1 to n.
+// For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+
+#include <stdio.h>
+#include <stdlib.h>
+int sum(int n)
+{
+```
+
+**Особенности:**
+- Стандартные заголовочные файлы для C (stdio.h, stdlib.h)
+- Стиль открывающей скобки на новой строке (K&R style)
+
+---
+
+### 3.4. C# - Суммирование чисел
+
+**Язык:** C#
+**Задача:** Та же задача на C#
+
+```csharp
+// Write a function that returns the sum of the numbers from 1 to n.
+// For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+private int sum(int n) {
+```
+
+**Особенности:**
+- Модификатор доступа (private)
+- Синтаксис методов C#
+
+---
+
+### 3.5. Java - Суммирование чисел
+
+**Язык:** Java
+**Задача:** Та же задача на Java с классом
+
+```java
+// Write a function that returns the sum of the numbers from 1 to n.
+// For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+
+public class SumOfNumbers {
+```
+
+**Особенности:**
+- Начинается с объявления public class (требование Java)
+- Модель должна сгенерировать метод внутри класса
+
+---
+
+### 3.6. HTML - Создание домашней страницы
+
+**Язык:** HTML
+**Задача:** Веб-верстка
+
+```html
+<!--Write a homepage of CodeGeeX.-->
+
+<div class="container">
+```
+
+**Особенности:**
+- Использование HTML комментариев <!-- -->
+- Начало контейнера для содержимого
+- Модель сгенерирует структуру HTML страницы
+
+---
+
+### 3.7. PHP - Суммирование с проверками
+
+**Язык:** PHP
+**Задача:** Функция с обработкой edge cases
+
+```php
+// Write a function that returns the sum of the numbers from 1 to n.
+// For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+// If n is 0, then the function should return 0.
+// If n is less than 0, then the function should return -1.
+/**
+ * @param {number} n
+ * @return {number}
+ */
+function sum ($n) {
+```
+
+**Особенности:**
+- Более детальное описание с edge cases (n=0, n<0)
+- PHPDoc комментарии для документации
+- Показывает, как модель обрабатывает сложные требования
+
+---
+
+### 3.8. JavaScript - Базовая функция
+
+**Язык:** JavaScript
+**Задача:** Простая функция суммирования
+
+```javascript
+// Write a function that returns the sum of the numbers from 1 to n.
+// For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+
+function sum(n) {
+```
+
+**Особенности:**
+- Простой синтаксис JS функций
+- Отсутствие типов (динамическая типизация)
+
+---
+
+### 3.9. TypeScript - Цикл for
+
+**Язык:** TypeScript
+**Задача:** Вариант с указанием конкретного подхода (for loop)
+
+```typescript
+// Write a function that returns the sum of the numbers from 1 to n,
+// but using a for loop instead of a while loop.
+
+function sumForLoop(n) {
+```
+
+**Особенности:**
+- Явное указание требуемого алгоритма (for loop)
+- Имя функции отражает используемый подход
+- Демонстрация детального контроля над генерацией
+
+---
+
+### 3.10. Go - Цикл for
+
+**Язык:** Go
+**Задача:** Та же задача с for loop на Go
+
+```go
+// Write a function that returns the sum of the numbers from 1 to n,
+// but using a for loop instead of a while loop.
+
+func sumN(n int) int {
+```
+
+**Особенности:**
+- Синтаксис Go: типы после имен параметров
+- func ключевое слово
+- Типизированное возвращаемое значение
+
+---
+
+### 3.11. Rust - Цикл for
+
+**Язык:** Rust
+**Задача:** Та же задача на Rust
+
+```rust
+// Write a function that returns the sum of the numbers from 1 to n,
+// but using a for loop instead of a while loop.
+
+fn sum_numbers(n: usize) -> usize {
+```
+
+**Особенности:**
+- fn для объявления функций
+- Тип usize (беззнаковое целое размером с указатель)
+- Синтаксис -> для типа возврата
+
+---
+
+### 3.12. SQL - Запросы к базе данных
+
+**Язык:** SQL
+**Задача:** Операции с таблицей
+
+```sql
+-- Search all the records from the table CodeGeeX
+-- Delete iterms with odd indices
+```
+
+**Особенности:**
+- Использование -- для комментариев
+- Описание операций с данными
+- Модель сгенерирует SELECT и DELETE запросы
+
+---
+
+### 3.13. Kotlin - Суммирование
+
+**Язык:** Kotlin
+**Задача:** Базовая функция на Kotlin
+
+```kotlin
+// Write a function that returns the sum of the numbers from 1 to n.
+// For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+
+fun sum(n: Int): Int {
+```
+
+**Особенности:**
+- fun ключевое слово (как в Scala)
+- Типы с заглавной буквы (Int)
+- Двоеточие перед типом
+
+---
+
+### 3.14. Fortran - Модуль с функцией
+
+**Язык:** Fortran
+**Задача:** Научные вычисления
+
+```fortran
+! Write a function that returns the sum of the numbers from 1 to n.
+! For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+
+! Use the following header:
+! module sum_numbers
+! end
+module sum_numbers
+```
+
+**Особенности:**
+- Использование ! для комментариев
+- Структура модуля Fortran
+- Явное указание требуемой структуры кода
+
+---
+
+### 3.15. R - Статистическая функция
+
+**Язык:** R
+**Задача:** Базовая функция на R
+
+```r
+# Write a function that returns the sum of the numbers from 1 to n.
+# For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+sum_numbers <- function(n) {
+```
+
+**Особенности:**
+- Синтаксис R: <- для присваивания
+- function() для объявления функций
+- Стиль именования snake_case
+
+---
+
+### Паттерны и best practices
+
+Из этих примеров видны следующие паттерны успешных промтов:
+
+1. **Ясность описания**
+   - Четко сформулируйте, что должна делать функция
+   - Приведите примеры входных и выходных данных
+
+2. **Спецификация edge cases**
+   - Укажите особые случаи (n=0, n<0, пустой массив)
+   - Определите ожидаемое поведение
+
+3. **Контекст кода**
+   - Включайте необходимые импорты/заголовочные файлы
+   - Предоставьте сигнатуру функции с типами
+
+4. **Стиль комментариев**
+   - Используйте стиль комментариев, принятый в языке
+   - // для C-подобных, # для Python-подобных, -- для SQL
+
+5. **Детализация алгоритма** (опционально)
+   - Можно указать конкретный подход ("using for loop")
+   - Можно указать структуру данных ("using hash map")
+
+6. **Имена переменных и функций**
+   - Используйте осмысленные имена
+   - Следуйте конвенциям языка (camelCase, snake_case)
+
